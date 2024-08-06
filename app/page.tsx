@@ -8,13 +8,14 @@ import { useEffect,useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState<any>('');
-  const [params, setParams] = useState<any>({});
+  const [params, setParams] = useState<any>('');
 
   useEffect(()=>{
     if (typeof window != 'undefined'){
       WebApp.ready();
-      const initData = WebApp.initDataUnsafe;
+      const initData = WebApp.initDataUnsafe.start_param;
       setParams(initData);
+      // console.log(initData);
     }
   },[])
 
@@ -27,7 +28,7 @@ export default function Home() {
 
   useEffect(() => {
       if (typeof window != 'undefined'){
-        setData(WebApp);
+        // setData(WebApp);
         (window as any).onTelegramAuth = function(user: { first_name: string; last_name: string; id: string; username: string; }) {
           alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
       }
