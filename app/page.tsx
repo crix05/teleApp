@@ -7,14 +7,13 @@ import { useEffect,useState } from "react";
 
 
 export default function Home() {
-  const [data, setData] = useState({});
-  const [params, setParams] = useState<any>('');
+  const [data, setData] = useState<any>('');
+  const [params, setParams] = useState<any>({});
 
   useEffect(()=>{
     if (typeof window != 'undefined'){
       WebApp.ready();
-      // const initData = WebApp.initDataUnsafe.start_param;
-      const initData = "Hello"
+      const initData = WebApp.initDataUnsafe;
       setParams(initData);
     }
   },[])
