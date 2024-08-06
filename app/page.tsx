@@ -13,9 +13,10 @@ export default function Home() {
   useEffect(()=>{
     if (typeof window != 'undefined'){
       WebApp.ready();
-      const initData = WebApp.initDataUnsafe;
-      setParams(Object.keys(initData));
+      const urlParams = new URLSearchParams(window.location.search);
+      const startParam = urlParams.get('start')
       // console.log(initData);
+      setParams(startParam);
     }
   },[])
 
