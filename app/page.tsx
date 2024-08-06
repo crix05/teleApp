@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(()=>{
     if (typeof window != 'undefined'){
       console.log(WebApp);
-      const initData = WebApp.initData;
+      const { initData } = retrieveLaunchParams();
       setParams(initData);
     }
   },[])
