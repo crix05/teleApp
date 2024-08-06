@@ -9,11 +9,14 @@ import { retrieveLaunchParams } from '@telegram-apps/sdk';
 export default function Home() {
   const [data, setData] = useState({});
   const [params, setParams] = useState<any>('');
-  if (typeof window != 'undefined'){
-    console.log(WebApp);
-    const initData = WebApp.initData;
-    setParams(initData);
-  }
+
+  useEffect(()=>{
+    if (typeof window != 'undefined'){
+      console.log(WebApp);
+      const initData = WebApp.initData;
+      setParams(initData);
+    }
+  },[])
 
 
   function handleInvite(){
