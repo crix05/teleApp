@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import WebApp from '@twa-dev/sdk'
 import Script from 'next/script';
 import { useEffect,useState } from "react";
+import { url } from "inspector";
 
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
       const urlParams = new URLSearchParams(window.location.search);
       const startParam = urlParams.get('start')
       // console.log(initData);
-      setParams(startParam);
+      setParams(urlParams);
     }
   },[])
 
