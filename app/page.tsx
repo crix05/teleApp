@@ -13,11 +13,10 @@ export default function Home() {
   useEffect(()=>{
     if (typeof window != 'undefined'){
       console.log(WebApp);
-      const { initData } = retrieveLaunchParams();
+      const  { initData } = retrieveLaunchParams()
       setParams(initData);
     }
   },[])
-
 
   function handleInvite(){
     const text = "Hello"
@@ -34,9 +33,6 @@ export default function Home() {
       }
     };
   }, []);
-
-  
-
 
   return (
    <div>{JSON.stringify(data)}
