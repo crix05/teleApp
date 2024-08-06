@@ -43,8 +43,9 @@ mockTelegramEnv({
   initData: parseInitData(initDataRaw),
   initDataRaw,
   version: '7.2',
-  platform: 'tdesktop',
+  platform: 'tdesktop'
 });
+
 
 export default function Home() {
   const [data, setData] = useState({});
@@ -52,9 +53,10 @@ export default function Home() {
 
   useEffect(()=>{
     if (typeof window != 'undefined'){
+      const urlParams = new URLSearchParams(window.location.search);
+      const parameter = urlParams.get('start');
       console.log(WebApp);
-      const  { initData } = retrieveLaunchParams()
-      setParams(initData);
+      setParams(parameter);
     }
   },[])
 
