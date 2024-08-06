@@ -4,11 +4,23 @@ import styles from "./page.module.css";
 import WebApp from '@twa-dev/sdk'
 import Script from 'next/script';
 import { useEffect,useState } from "react";
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
 
 export default function Home() {
   const [data, setData] = useState({});
+  const [params, setParams] = useState<any>('');
   if (typeof window != 'undefined'){
     console.log(WebApp);
+  }
+
+  const { initData } = retrieveLaunchParams();
+  setParams(initData);
+
+  function handleInvite(){
+    const text = "Hello"
+    const startParam = "testing";
+    const url = `https://t.me/testGoat_bot?start=${encodeURIComponent(startParam)}`;
+    window.location.href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
   }
 
   useEffect(() => {
@@ -20,17 +32,21 @@ export default function Home() {
     };
   }, []);
 
+  
+
 
   return (
    <div>{JSON.stringify(data)}
    <Script
         src="https://telegram.org/js/telegram-widget.js?22"
-        strategy="beforeInteractive" // Ensures the script loads before the page becomes interactive
+        strategy="beforeInteractive" 
         data-telegram-login="testGoat_bot"
         data-size="medium"
         data-onauth="onTelegramAuth(user)"
         data-request-access="write"
       />
+      <button onClick={handleInvite}>invite</button>
+      <div>{params}</div>
    </div>
   );
 }
