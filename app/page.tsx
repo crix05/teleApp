@@ -14,7 +14,7 @@ export default function Home() {
     if (typeof window != 'undefined'){
       WebApp.ready();
       const initData = WebApp.initDataUnsafe
-      console.log(initData);
+      setParams(initData);
     }
   },[])
 
