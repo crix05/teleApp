@@ -8,12 +8,17 @@ import { useEffect } from "react";
 export default function Home() {
   if (typeof window != 'undefined'){
     console.log(WebApp);
-    useEffect(() => {
+  }
+
+  useEffect(() => {
+      if (typeof window != 'undefined'){
       (window as any).onTelegramAuth = function(user: { first_name: string; last_name: string; id: string; username: string; }) {
         alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
-      };
-    }, []);
-  }
+      }
+    };
+  }, []);
+
+
   return (
    <div>{WebApp.initData}
    <Script
