@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(()=>{
     if (typeof window != 'undefined'){
       WebApp.ready();
-      const initData = WebApp.initDataUnsafe.start_param;
+      const initData = WebApp.initDataUnsafe.query_id;
       setParams(initData);
       // console.log(initData);
     }
