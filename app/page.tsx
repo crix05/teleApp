@@ -11,11 +11,10 @@ export default function Home() {
   const [params, setParams] = useState<any>('');
   if (typeof window != 'undefined'){
     console.log(WebApp);
-    const { initData } = retrieveLaunchParams();
+    const initData = WebApp.initData;
     setParams(initData);
   }
 
-  
 
   function handleInvite(){
     const text = "Hello"
